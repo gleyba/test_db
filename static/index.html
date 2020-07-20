@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+    let HttpClient = function() {
+        this.get = function(aUrl, aCallback) {
+            let anHttpRequest = new XMLHttpRequest()
+            anHttpRequest.onreadystatechange = function() {
+                aCallback(anHttpRequest.responseText);
+            }
+            anHttpRequest.open( "GET", aUrl, true )
+            anHttpRequest.send( null )
+        }
+    }
+    function run_query() {
+        let query = document.getElementById("query_input").value
+        let parts =  window.location.href.split("/")
+        let uri = parts[0] + "//" + parts[2]+"/query?sql="+encodeURIComponent(query)
+        let client = new HttpClient()
+        client.get(uri, function(response) {
+            document.getElementById("output").innerText = response
+        });
+    }
+</script>
+<style>
+    div{
+        margin-bottom: 10px;
+    }
+    textarea {
+        resize: none;
+    }
+</style>
+</head>
+<body>
+<div>
+    <div><textarea id="query_input" cols="60" rows="8""></textarea></div>
+    <div><button onclick="run_query()">Run Query</button></div>
+    <div id="output"></div>
+</div>
+</body>
+</html>

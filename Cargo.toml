@@ -1,0 +1,25 @@
+[package]
+name = "test_db"
+version = "0.1.0"
+authors = ["Gleb Kolobkov <gleyba.k@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+bytes = "0.5"
+futures = "0.3.5"
+guard = "0.5.0"
+csv-core = "0.1.6"
+tokio = { version = "0.2.21", features = ["full"] }
+tokio-util = { version = "0.3.1", features = ["codec"] }
+mdbx-sys = "0.7.1"
+rocket = { git = "https://github.com/SergioBenitez/Rocket.git", branch = "master" }
+rocket_contrib = { git = "https://github.com/SergioBenitez/Rocket.git", branch = "master" }
+slog = "2.5.2"
+sloggers = "1.0.1"
+flexbuffers = "0.1.1"
+libc = "0.2.70"
+dirs = "3.0.1"
+mimalloc = { version = "0.1.19", default-features = false }
+indexmap = "1.5.1"
+sqlparser = "0.6.1"
+json = "0.12.4"
